@@ -5,16 +5,20 @@ import Services from "../Components/Services";
 import PopularMenu from "../Components/PopularMenu";
 import CallUs from "../Components/CallUs";
 import Recommends from "../Components/Recommends";
+import Featured from "../Components/Featured";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <SmallSlider />
-      <Services />
-      <PopularMenu />
-      <CallUs />
-      <Recommends />
+      <div className="max-w-6xl mx-auto">
+        <SmallSlider />
+        <Services />
+        <PopularMenu />
+        <CallUs />
+        <Recommends />
+      </div>
+      <Featured />
     </>
   );
 };
