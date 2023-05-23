@@ -73,11 +73,14 @@ export default function SmallSlider() {
           modules={[Pagination]}
           className="mySwiper">
           {images.map((i) => (
-            <SwiperSlide>
+            <SwiperSlide className="relative">
               <img src={i.image} alt="" />
               <h1 className="text-3xl text-center -mt-24 text-white font- ">
                 {i.text}
               </h1>
+              <div className="absolute opacity-0 hover:opacity-100  flex items-center justify-center hover:bg-black/50 duration-200 cursor-pointer inset-0 text-3xl text-white">
+                <h1>{i.text}</h1>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
