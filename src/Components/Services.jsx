@@ -3,9 +3,9 @@ import img from "../assets/home/chef-service.jpg";
 const Services = () => {
   return (
     <>
-      <div className="relative flex items-center justify-center pt-20">
-        <div className="w-2/3 absolute text-center px-10 py-14 space-y-2  bg-black/30 backdrop-blur-sm  z-10">
-          <h1 className="text-3xl  text-gray-900 uppercase font-semibold">
+      <div className="relative flex service  items-center justify-center my-10 py-10">
+        <div className="w-2/3 my-10 text-center px-10 py-14 space-y-5    bg-white/30 backdrop-blur-sm  z-10">
+          <h1 className="text-4xl  text-gray-100 uppercase font-semibold">
             Bistro Boss
           </h1>
           <p className="tracking-wide text-gray-200">
@@ -17,7 +17,6 @@ const Services = () => {
             blanditiis, ea reprehenderit quidem obcaecati necessitatibus quo!
           </p>
         </div>
-        <img src={img} alt="" />
       </div>
     </>
   );
