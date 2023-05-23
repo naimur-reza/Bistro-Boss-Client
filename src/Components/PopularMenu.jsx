@@ -20,6 +20,11 @@ const PopularMenu = () => {
           <MenuItem id={i._id} item={i} />
         ))}
       </div>
+      <div className="text-center py-5">
+        <button className="btn btn-ghost border-b-orange-600 border-2 text-gray-700">
+          VIEW FULL MENU
+        </button>
+      </div>
     </>
   );
 };
