@@ -42,6 +42,8 @@ const Footer = () => {
             <a className="link link-hover">Privacy policy</a>
             <a className="link link-hover">Cookie policy</a>
           </div>
+        </div>
+      </footer>
       <div className="footer items-center p-4 bg-neutral text-neutral-content">
         <div className="items-center grid-flow-col">
           <svg
@@ -88,8 +90,6 @@ const Footer = () => {
             </svg>
           </a>
         </div>
-        </div>
-      </footer>
       </div>
     </>
   );
