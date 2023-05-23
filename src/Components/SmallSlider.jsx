@@ -13,6 +13,7 @@ import img2 from "../../src/assets/home/slide2.jpg";
 import img3 from "../../src/assets/home/slide3.jpg";
 import img4 from "../../src/assets/home/slide4.jpg";
 import img5 from "../../src/assets/home/slide5.jpg";
+import SectionTitle from "./Shared/SectionTitle";
 
 export default function SmallSlider() {
   const images = [
@@ -40,7 +41,11 @@ export default function SmallSlider() {
 
   return (
     <>
-      <div className="py-14">
+      <div className="py-20">
+        <SectionTitle
+          subHeading={"From 8AM To 11PM"}
+          heading={"order online"}
+        />
         <Swiper
           slidesPerView={1}
           spaceBetween={5}
