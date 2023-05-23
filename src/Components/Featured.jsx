@@ -14,7 +14,7 @@ const Featured = () => {
         <div className="lg:flex gap-5  max-w-6xl mx-auto">
           <img className="w-[500px]" src={img} alt="" />
           <div>
-            <h1 className="text-gray-200">
+            <h1 className="text-gray-200 tracking-wide pb-7">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad eos
               culpa, reprehenderit ut quod quasi inventore nihil corporis nemo,
               facere molestias itaque quisquam impedit, at deserunt quos dolor.

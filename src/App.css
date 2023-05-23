@@ -9,3 +9,14 @@
   background-position: cover;
   background-size: cover;
 }
+.service {
+  background: linear-gradient(
+      0deg,
+      rgba(21, 21, 21, 0.7),
+      rgba(21, 21, 21, 0.7)
+    ),
+    url("./assets/home/chef-service.jpg");
+  background-attachment: fixed;
+  background-position: cover;
+  background-size: cover;
+}
