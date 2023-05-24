@@ -2,6 +2,7 @@ import React from "react";
 import MenuItem from "./MenuItem";
 import SectionTitle from "./SectionTitle";
 import Cover from "./Cover";
+import { Link } from "react-router-dom";
 
 const MenuItems = ({ items, imageBg, title }) => {
   return (
@@ -12,6 +13,9 @@ const MenuItems = ({ items, imageBg, title }) => {
           <MenuItem id={i._id} item={i} />
         ))}
       </div>
+      <Link className="btn btn-success" to={`/shop/${title}`}>
+        Buy Now
+      </Link>
     </div>
   );
 };
