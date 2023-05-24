@@ -16,7 +16,7 @@ export default function Review() {
   }, []);
   return (
     <>
-      <div>
+      <div className="pb-14">
         <SectionTitle
           subHeading={"What Our Clients Says"}
           heading={"testimonial"}
@@ -34,7 +34,9 @@ export default function Review() {
                 />
 
                 <FaQuoteLeft size={50} className="mx-auto" />
-                <h1 className="px-20  tracking-wide">{r.details}</h1>
+                <h1 className="px-20 text-gray-600 tracking-wide">
+                  {r.details}
+                </h1>
                 <p className="text-2xl  text-yellow-600">{r.name}</p>
               </div>
             </SwiperSlide>
