@@ -13,6 +13,9 @@ const Header = () => {
       <li>
         <Link to={"/shop/salad"}>Order</Link>
       </li>
+      <li>
+        <Link to={"/login"}>Login</Link>
+      </li>
     </>
   );
   return (
