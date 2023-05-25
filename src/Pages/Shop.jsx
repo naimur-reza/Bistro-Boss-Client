@@ -6,10 +6,15 @@ import { Tab, TabList, Tabs, TabPanel } from "react-tabs";
 import useMenu from "../hooks/useMenu";
 import FoodCard from "../Components/FoodCard";
 import OrderTab from "../Components/OrderTab";
+import { useParams } from "react-router-dom";
 const Shop = () => {
-  const [tabIndex, setTabIndex] = useState(0);
   const [menu] = useMenu();
-  const offered = menu.filter((m) => m.category === "offered");
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category.toLowerCase());
+  console.log(initialIndex);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
+
   const dessert = menu.filter((m) => m.category === "dessert");
   const pizza = menu.filter((m) => m.category === "pizza");
   const soup = menu.filter((m) => m.category === "soup");
@@ -23,6 +28,7 @@ const Shop = () => {
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>
           <Tab>Soup</Tab>
+          <Tab>Dessert</Tab>
           <Tab>Drinks</Tab>
         </TabList>
 
