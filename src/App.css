@@ -20,3 +20,11 @@
   background-position: cover;
   background-size: cover;
 }
+
+.loginBg {
+  background-image: url("../src/assets/others/authentication.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 100vh;
+}
