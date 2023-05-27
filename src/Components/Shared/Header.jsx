@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCartPlus } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
       <li>
         <Link to={"/"}>
           <button className="inline-flex items-center gap-2">
-            <FaCartPlus />
+            <FaShoppingCart />
             <div className="badge badge-error">...coming</div>
           </button>
         </Link>
@@ -29,7 +29,7 @@ const Header = () => {
   );
   return (
     <>
-      <div className="navbar fixed z-10 px-20 my-2 py-3 bg-black/30">
+      <div className="navbar fixed z-10 px-20 bg-black/30">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

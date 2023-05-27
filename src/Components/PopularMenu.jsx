@@ -12,7 +12,7 @@ const PopularMenu = () => {
         <SectionTitle subHeading={"Check It Out"} heading={"from our menu"} />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
           {popular.map((i) => (
-            <MenuItem id={i._id} item={i} />
+            <MenuItem id={i._id} key={i._id} item={i} />
           ))}
         </div>
         <div className="text-center py-5">
