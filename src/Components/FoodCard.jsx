@@ -1,8 +1,28 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user } = useContext(AuthContext);
   const handleAddToCart = (item) => {
-    console.log(item);
+    if (!user) {
+      Swal.fire({
+        title: "You need to login first!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login Now",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location.pathname } });
+        }
+      });
+    }
   };
   const { name, image, price, recipe } = item || {};
   return (

@@ -9,9 +9,14 @@ import img from "../assets/others/authentication1.png";
 import { toast } from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import { useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
   const { user, loading, signIn } = useContext(AuthContext);
   const captchaRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
+  console.log(from);
   const [disable, setDisable] = useState(true);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,6 +25,7 @@ const Login = () => {
     const password = form.password.value;
     signIn(email, password)
       .then((res) => {
+        navigate(from, { replace: true });
         toast.success("Login Success");
       })
       .catch((err) => {
@@ -93,10 +99,12 @@ const Login = () => {
                   className="btn-block btn-outline btn-error btn-sm btn">
                   Validate
                 </button>
+
+                {/* To:Do => Disable this login button */}
                 <div className="form-control mt-6">
                   <button
                     type="submit"
-                    disabled={disable}
+                    disabled={false}
                     className={`btn btn-warning `}>
                     Login
                   </button>

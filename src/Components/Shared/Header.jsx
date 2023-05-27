@@ -1,8 +1,11 @@
 import React from "react";
+import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProviders";
 
 const Header = () => {
+  const { logOut, user, loading } = useContext(AuthContext);
   const items = (
     <>
       <li>
@@ -59,7 +62,9 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1 text-white">{items}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <button className="text-white font-semibold" onClick={logOut}>
+            Log Out
+          </button>
         </div>
       </div>
     </>
