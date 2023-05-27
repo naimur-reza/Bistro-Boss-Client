@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -16,11 +17,19 @@ const Header = () => {
       <li>
         <Link to={"/login"}>Login</Link>
       </li>
+      <li>
+        <Link to={"/"}>
+          <button className="inline-flex items-center gap-2">
+            <FaCartPlus />
+            <div className="badge badge-error">...coming</div>
+          </button>
+        </Link>
+      </li>
     </>
   );
   return (
     <>
-      <div className="navbar fixed z-10 px-20  bg-black/30">
+      <div className="navbar fixed z-10 px-20 my-2 py-3 bg-black/30">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

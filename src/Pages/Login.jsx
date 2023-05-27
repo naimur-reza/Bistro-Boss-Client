@@ -7,11 +7,25 @@ import {
 } from "react-simple-captcha";
 import img from "../assets/others/authentication1.png";
 import { toast } from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
 const Login = () => {
+  const { user, loading, signIn } = useContext(AuthContext);
   const captchaRef = useRef(null);
   const [disable, setDisable] = useState(true);
   const handleLogin = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then((res) => {
+        toast.success("Login Success");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+    toast.success("clicked");
   };
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -44,6 +58,8 @@ const Login = () => {
                   <input
                     type="email"
                     placeholder="email"
+                    required
+                    name="email"
                     className="input input-bordered"
                   />
                 </div>
@@ -54,6 +70,8 @@ const Login = () => {
                   </label>
                   <input
                     type="password"
+                    required
+                    name="password"
                     placeholder="password"
                     className="input input-bordered"
                   />
@@ -76,7 +94,10 @@ const Login = () => {
                   Validate
                 </button>
                 <div className="form-control mt-6">
-                  <button disabled={disable} className={`btn btn-warning `}>
+                  <button
+                    type="submit"
+                    disabled={disable}
+                    className={`btn btn-warning `}>
                     Login
                   </button>
                 </div>
