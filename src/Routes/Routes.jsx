@@ -5,6 +5,9 @@ import Menu from "../Pages/Menu";
 import Shop from "../Pages/Shop";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import Spinner from "../Components/Shared/Spinner";
+import Dashboard from "../Layout/Dashboard";
+import MyCart from "../Pages/Dashboard/MyCart";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,20 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "spinner",
+        element: <Spinner />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "myCart",
+        element: <MyCart />,
       },
     ],
   },
