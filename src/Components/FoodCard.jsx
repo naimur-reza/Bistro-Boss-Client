@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import useCart from "../hooks/useCart";
+import { toast } from "react-hot-toast";
 
 const FoodCard = ({ item }) => {
+  const [loading, setLoading] = useState(false);
+  const [, reFetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useContext(AuthContext);
   const handleAddToCart = (item) => {
+    const { name, _id, price, recipe, image } = item || {};
+    const foodCart = {
+      menuItemId: _id,
+      name,
+      price,
+      recipe,
+      image,
+      email: user?.email,
+    };
     if (!user) {
       Swal.fire({
         title: "You need to login first!",
@@ -23,6 +36,23 @@ const FoodCard = ({ item }) => {
         }
       });
     }
+    setLoading(true);
+    fetch(`http://localhost:3000/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(foodCart),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          reFetch();
+          toast.success("Item added to cart");
+          setLoading(false);
+        }
+      });
+    console.log("hitting");
   };
   const { name, image, price, recipe } = item || {};
   return (

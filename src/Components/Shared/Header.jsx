@@ -3,8 +3,11 @@ import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
+import useCart from "../../hooks/useCart";
 
 const Header = () => {
+  const [menu] = useCart();
+  console.log(menu);
   const { logOut, user, loading } = useContext(AuthContext);
   const items = (
     <>
@@ -24,7 +27,7 @@ const Header = () => {
         <Link to={"/"}>
           <button className="inline-flex items-center gap-2">
             <FaShoppingCart />
-            <div className="badge badge-error">...coming</div>
+            <div className="badge badge-error">+{menu?.length || 0}</div>
           </button>
         </Link>
       </li>
