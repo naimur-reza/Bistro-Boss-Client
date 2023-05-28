@@ -18,6 +18,9 @@ const Header = () => {
         <Link to={"/menu"}>Menu</Link>
       </li>
       <li>
+        <Link to={"/dashboard"}>Dashboard</Link>
+      </li>
+      <li>
         <Link to={"/shop/salad"}>Order</Link>
       </li>
       <li>

@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPen, FaTrash } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 import SectionTitle from "../../Components/Shared/SectionTitle";
+import Spinner from "../../Components/Shared/Spinner";
+import Swal from "sweetalert2";
+import { toast } from "react-hot-toast";
 
 const MyCart = () => {
-  const [cart] = useCart();
+  const [loading, setLoading] = useState(false);
+  const [cart, refetch] = useCart();
   const total = cart.reduce((acc, curr) => acc + curr.price, 0); // 0 is initial value
-
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setLoading(true);
+        fetch(`http://localhost:3000/cart/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              setLoading(false);
+              console.log(data);
+              toast.success("Item deleted from cart");
+            }
+          });
+      }
+    });
+  };
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div className="overflow-x-auto w-full px-5">
       <SectionTitle heading={"Wanna Add More?"} subHeading={"My Cart"} />
@@ -35,7 +69,7 @@ const MyCart = () => {
             {/* row 1 */}
             {cart.map((item, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <th>
                     <label className="text-black">{index + 1}</label>
                   </th>
@@ -52,7 +86,9 @@ const MyCart = () => {
                   <td className="text-gray-500">${item.price}</td>
 
                   <th>
-                    <button className="btn btn-ghost btn-sm">
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="btn btn-error bg-red-500 text-white btn-sm">
                       <FaTrash />
                     </button>
                   </th>
