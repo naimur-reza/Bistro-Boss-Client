@@ -1,5 +1,10 @@
 # Bistro Boss Restaurant
 
-<h1>Package Used</h1>
+<h5>Package Used</h5>
 
-- Axios Js
+- AXIOS JS
+- REACT-PARALLAX
+- REACT-ICONS
+- REACT-HOT-toast
+- REACT-HELMET
+-
