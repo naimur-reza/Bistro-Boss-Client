@@ -45,35 +45,35 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) => (isActive ? "text-white" : "")}
-                  to={"/adminHome"}>
+                  to={"adminHome"}>
                   <FaHome /> Admin Home
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   className={({ isActive }) => (isActive ? "text-white" : "")}
-                  to={"/addItem"}>
+                  to={"addItem"}>
                   <FaUtensils /> Add Item
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   className={({ isActive }) => (isActive ? "text-white" : "")}
-                  to={"/manageItem"}>
+                  to={"manageItems"}>
                   <FaWallet /> Manage Items
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   className={({ isActive }) => (isActive ? "text-white" : "")}
-                  to={"/manageBookings"}>
+                  to={"manageBookings"}>
                   <FaBook /> Manage Bookings
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   className={({ isActive }) => (isActive ? "text-white" : "")}
-                  to={"/allUsers"}>
+                  to={"allUsers"}>
                   <FaUsers /> All Users
                 </NavLink>
               </li>
@@ -133,17 +133,17 @@ const Dashboard = () => {
             </Link>
           </li>
           <li>
-            <Link>
+            <Link to={"/menu"}>
               <FaBars /> Menu
             </Link>
           </li>
           <li>
-            <Link>
+            <Link to={"/shop/salad"}>
               <FaShopify /> Shop
             </Link>
           </li>
           <li>
-            <Link>
+            <Link to={"/contact"}>
               <FaEnvelope /> Contact
             </Link>
           </li>
