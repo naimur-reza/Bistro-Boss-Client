@@ -8,6 +8,7 @@ import Login from "../Pages/Login";
 import Spinner from "../Components/Shared/Spinner";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../Pages/Dashboard/MyCart";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -42,11 +43,20 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "myCart",
-        element: <MyCart />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyCart />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -7,13 +7,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const location = useLocation();
-  const from = location.pathname.from || "/";
+  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const { loginWithGoogle } = useContext(AuthContext);
   const handleLogin = () => {
     loginWithGoogle()
       .then((res) => {
         toast.success("Login Successful");
+        const user = res.user;
+        const saveUser = { name: user.displayName, email: user.email };
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+
         navigate(from, { replace: true });
       })
       .catch((err) => {

@@ -29,7 +29,7 @@ const Header = () => {
         </li>
       )}
       <li>
-        <Link to={"/"}>
+        <Link to={"dashboard/myCart"}>
           <button className="inline-flex items-center gap-2">
             <FaShoppingCart />
             <div className="badge badge-error">+{menu?.length || 0}</div>
