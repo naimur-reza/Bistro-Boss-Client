@@ -1,6 +1,7 @@
 import React from "react";
 import {
   FaBars,
+  FaBook,
   FaCalendarAlt,
   FaCalendarCheck,
   FaComment,
@@ -12,10 +13,16 @@ import {
   FaMoneyCheckAlt,
   FaShopify,
   FaShoppingCart,
+  FaUsers,
+  FaUtensils,
+  FaWallet,
 } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+  // TODO : handle Admin from database
+  const isAdmin = true;
+
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -33,49 +40,91 @@ const Dashboard = () => {
 
         <ul className="menu p-4 w-80 bg-[#D1A054] text-gray-800   ">
           {/* <!-- Sidebar content here --> */}
-          <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? "text-white" : "")}
-              to={"userHome"}>
-              <FaHome /> USER HOME
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"reservation"}
-              className={({ isActive }) => (isActive ? "text-white" : "")}>
-              <FaCalendarAlt /> RESERVATION
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? "text-white" : "")}
-              to={"paymentHistory"}>
-              <FaMoneyCheck /> PAYMENT HISTORY
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"myCart"}
-              className={({ isActive }) => (isActive ? "text-white" : "")}>
-              <FaShoppingCart /> MY CART
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? "text-white" : "")}
-              to={"addReview"}>
-              <FaComment /> ADD REVIEW
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"myBookings"}
-              className={({ isActive }) => (isActive ? "text-white" : "")}>
-              <FaCalendarCheck />
-              MY BOOKINGS
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"/adminHome"}>
+                  <FaHome /> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"/addItem"}>
+                  <FaUtensils /> Add Item
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"/manageItem"}>
+                  <FaWallet /> Manage Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"/manageBookings"}>
+                  <FaBook /> Manage Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"/allUsers"}>
+                  <FaUsers /> All Users
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"userHome"}>
+                  <FaHome /> USER HOME
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"reservation"}
+                  className={({ isActive }) => (isActive ? "text-white" : "")}>
+                  <FaCalendarAlt /> RESERVATION
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"paymentHistory"}>
+                  <FaMoneyCheck /> PAYMENT HISTORY
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"myCart"}
+                  className={({ isActive }) => (isActive ? "text-white" : "")}>
+                  <FaShoppingCart /> MY CART
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) => (isActive ? "text-white" : "")}
+                  to={"addReview"}>
+                  <FaComment /> ADD REVIEW
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"myBookings"}
+                  className={({ isActive }) => (isActive ? "text-white" : "")}>
+                  <FaCalendarCheck />
+                  MY BOOKINGS
+                </NavLink>
+              </li>
+            </>
+          )}
 
           <hr />
           <li>
