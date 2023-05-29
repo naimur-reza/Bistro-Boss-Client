@@ -23,9 +23,11 @@ const Header = () => {
       <li>
         <Link to={"/shop/salad"}>Order</Link>
       </li>
-      <li>
-        <Link to={"/login"}>Login</Link>
-      </li>
+      {!user && (
+        <li>
+          <Link to={"/login"}>Login</Link>
+        </li>
+      )}
       <li>
         <Link to={"/"}>
           <button className="inline-flex items-center gap-2">
@@ -68,9 +70,13 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1 text-white">{items}</ul>
         </div>
         <div className="navbar-end">
-          <button className="text-white font-semibold" onClick={logOut}>
-            Log Out
-          </button>
+          {user ? (
+            <button className="text-white font-semibold" onClick={logOut}>
+              Log Out
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ import img from "../assets/others/authentication1.png";
 import { toast } from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
   const { user, loading, signIn } = useContext(AuthContext);
   const captchaRef = useRef(null);
@@ -99,7 +99,12 @@ const Login = () => {
                   className="btn-block btn-outline btn-error btn-sm btn">
                   Validate
                 </button>
-
+                <span className="text-gray-600 font-medium">
+                  New to here?{" "}
+                  <Link className="underline text-yellow-600" to={"/signUp"}>
+                    Sign Up
+                  </Link>
+                </span>
                 {/* To:Do => Disable this login button */}
                 <div className="form-control mt-6">
                   <button
