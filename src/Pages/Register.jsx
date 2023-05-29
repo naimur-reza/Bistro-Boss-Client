@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import SocialLogin from "../Components/Shared/SocialLogin";
 const Register = () => {
   const { user, loading, createUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -120,9 +121,7 @@ const Register = () => {
                   </button>
                 </div>
 
-                <div className="input cursor-pointer bg-gradient-to-r from-red-400 via-yellow-400 to-red-400 flex items-center justify-center">
-                  <FcGoogle size={35} />
-                </div>
+                <SocialLogin />
               </form>
             </div>
           </div>

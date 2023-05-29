@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../Components/Shared/SocialLogin";
 const Login = () => {
   const { user, loading, signIn } = useContext(AuthContext);
   const captchaRef = useRef(null);
@@ -69,7 +70,6 @@ const Login = () => {
                     className="input input-bordered"
                   />
                 </div>
-
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text text-gray-700">Password</span>
@@ -114,6 +114,7 @@ const Login = () => {
                     Login
                   </button>
                 </div>
+                <SocialLogin />
               </form>
             </div>
           </div>
