@@ -4,12 +4,17 @@ import { AuthContext } from "../../providers/AuthProviders";
 
 const useCart = () => {
   const { user } = useContext(AuthContext);
-
+  const token = localStorage.getItem("access-token");
   const { refetch, data: cart = [] } = useQuery({
     queryKey: ["carts", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:3000/cart?email=${user?.email}`
+        `http://localhost:3000/cart?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${token}`,
+          },
+        }
       );
       return res.json();
     },
