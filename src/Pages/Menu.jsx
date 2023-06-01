@@ -10,8 +10,12 @@ import PopularMenu from "../Components/PopularMenu";
 import SectionTitle from "../Components/Shared/SectionTitle";
 import useMenu from "../hooks/useMenu";
 import MenuItems from "../Components/Shared/MenuItems";
+import Spinner from "../Components/Shared/Spinner";
 const Menu = () => {
-  const [menu] = useMenu();
+  const [menu, loading] = useMenu();
+  if (loading) {
+    return <Spinner />;
+  }
   const popular = menu.filter((m) => m.category === "popular");
   const offered = menu.filter((m) => m.category === "offered");
   const dessert = menu.filter((m) => m.category === "dessert");
